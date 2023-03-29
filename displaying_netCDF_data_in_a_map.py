@@ -19,7 +19,7 @@ tave = data.variables['tave'][:]
 mp = Basemap(projection='merc', llcrnrlon=63.29590487394516, llcrnrlat=5.038228576233911,
             urcrnrlon=99.59473325017883, urcrnrlat=38.369077058122876, resolution='i')
 lon, lat = np.meshgrid(lons, lats)
-x, y = mp(lon, lat)
+x, y = mp(lon, lat) # Specify the x,y coordinates on the basemap
 
 # create a color scheme
 c_scheme = mp.pcolor(x,y,np.squeeze(tave[0,:,:]),cmap='jet')  # tave[time,lat,lon] time 0 corresponds to day 1
@@ -33,3 +33,18 @@ cbar = mp.colorbar(c_scheme, location='right', pad='10%')
 
 plt.title('Averaged temperature on 01-01-1962')
 plt.show()
+
+"""
+Basemap arguments
+1. projection = merc
+The Mercator projection is a cylindrical map projection presented by Flemish geographer and 
+cartographer Gerardus Mercator in 1569. It became the standard map projection for navigation 
+because it is unique in representing north as up and south as down everywhere while preserving 
+local directions and shapes.
+
+Set the boundaries of the map using the following arguments,
+2. llcrnrlon (lower left corner longitude)
+3. llcrnrlat (lower left corner latitude)
+4. urcrnrlon (upper right corner longitude)
+5. urcrnrlat (upper right corner latitude)
+"""
